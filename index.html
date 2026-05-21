@@ -289,34 +289,64 @@
       <h2 class="title is-3">Audio Demonstrations</h2>
       <p style="color: #4D545E;">
         Audio samples comparing CORTIS against baselines on forgotten and remained
-        speakers across sequential unlearning requests are coming soon.
+        speakers across sequential unlearning requests.
       </p>
     </div>
   </div>
 </section>
 
- <!-- <section class="section">
+ <section class="section">
     <div class="container">
       <div class="content" style="max-width: 600px; margin-left: 3rem;">
-      <h1 class="title is-3 mb-4">Our Methods on Remain Speakers</h1>
+      <h1 class="title is-3 mb-4">Continual Unlearning: Forget Speakers</h1>
       <p class="mb-6">
-        Our method prevents synthesis of Forget Speakers voices even across continual unlearning phases.
+        Each step below shows the model state after that unlearning request. Every speaker unlearned up to that point is listed, so you can verify that CORTIS maintains suppression of earlier speakers as new requests arrive. The row highlighted in green is the speaker being unlearned at that step; rows above it are prior forget speakers.
       </p>
-     <!-- <h3 class="subtitle is-5" style="margin-left: 3rem;">Model Pre-trained on LibriHeavy</h3> -->
+     <!-- <!-- <h3 class="subtitle is-5" style="margin-left: 3rem;">Model Pre-trained on LibriHeavy</h3> -->
     </div>
     <div class="container">
 
       <!-- Carousel container -->
-      <div id="carousel-demo" class="carousel">
+      <div id="carousel-forget" class="carousel">
 
-        <!-- First Slide -->
+<!-- First Slide -->
         <div class="carousel-item">
           <div class="table-container">
-            <h2 class="table-title">After 5 Continual Unlearn Requests</h2>
+            <h2 class="table-title">After Step 1 — Speaker 1 unlearned</h2>
             <table class="table is-fullwidth">
                 <thead>
                   <tr>
-                    <th>Unlearn Speaker</th>
+                    <th>Speaker</th>
+                    <th>Target Text</th>
+                    <th>*Audio Prompt</th>
+                    <th>*Sample to Forget</th>
+                    <th>CORTIS (Ours)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="highlight">
+                    <td><strong>Spk 1</strong><br><small>(current)</small></td>
+                    <td>Replace with target text for Speaker 1.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_one/spk1/prompt.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_one/spk1/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_one/spk1/cortis.wav" type="audio/wav"></audio></td>
+                  </tr>
+                </tbody>
+              </table>
+            <p class="table-explanation">
+              *Audio prompt and ground-truth sample are held-out utterances not seen during training or unlearning.
+            </p>
+          </div>
+        </div>
+
+        <!-- Second Slide -->
+        <div class="carousel-item">
+          <div class="table-container">
+            <h2 class="table-title">After Step 2 — Speaker 2 unlearned</h2>
+            <table class="table is-fullwidth">
+                <thead>
+                  <tr>
+                    <th>Speaker</th>
                     <th>Target Text</th>
                     <th>*Audio Prompt</th>
                     <th>*Sample to Forget</th>
@@ -325,116 +355,188 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td rowspan="3">TEXT PROMPT</td>
-                    <td rowspan="3"><audio class="small-audio" controls><source src="static/audios/LibriTTS_forget_speakers/4/source.wav" type="audio/wav"></audio></td>
-                    <td rowspan="3"><audio class="small-audio" controls><source src="static/audios/LibriTTS_forget_speakers/4/ground_truth.wav" type="audio/wav"></audio></td>
-                    <td><audio class="small-audio" controls><source src="static/audios/LibriTTS_forget_speakers/4/SGU_0.wav" type="audio/wav"></audio></td>
-                    <td><audio class="small-audio" controls><source src="static/audios/LibriTTS_forget_speakers/4/TGU_0.wav" type="audio/wav"></audio></td>
+                    <td>Spk 1<br><small>(prior)</small></td>
+                    <td>Replace with target text for Speaker 1.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_two/spk1/prompt.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_two/spk1/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_two/spk1/cortis.wav" type="audio/wav"></audio></td>
                   </tr>
-                  <tr>
-                    <td><audio class="small-audio" controls><source src="static/audios/LibriTTS_forget_speakers/4/SGU_1.wav" type="audio/wav"></audio></td>
-                    <td><audio class="small-audio" controls><source src="static/audios/LibriTTS_forget_speakers/4/TGU_1.wav" type="audio/wav"></audio></td>
-                  </tr>
-                  <tr>
-                    <td><audio class="small-audio" controls><source src="static/audios/LibriTTS_forget_speakers/4/SGU_2.wav" type="audio/wav"></audio></td>
-                    <td><audio class="small-audio" controls><source src="static/audios/LibriTTS_forget_speakers/4/TGU_2.wav" type="audio/wav"></audio></td>
-                    </tr>
-                </tbody>
-              </table>
-            <p class="table-explanation">
-              *An actual audio file spoken by Remain Speaker, but not seen during training or unlearning process.
-            </p>
-          </div>
-        </div> -->
-
-        <!-- Second Slide -->
-        <!-- <div class="carousel-item">
-          <div class="table-container">
-            <h2 class="table-title">LibriSpeech Remain Speaker 2</h2>
-            <table class="table is-fullwidth">
-                <thead>
-                  <tr>
-                    <th>Target Text</th>
-                    <th>*Audio Prompt</th>
-                    <th>*Sample to Remain</th>
-                    <th>SGU (Ours)</th>
-                    <th>TGU (Ours)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>...and towards Christmas, he was one of the first that was cut down.</td>
-                    <td><audio class="small-audio" controls><source src="static/audios/remain_speakers/2/source.wav" type="audio/wav"></audio></td>
-                    <td><audio class="small-audio" controls><source src="static/audios/remain_speakers/2/ground_truth.wav" type="audio/wav"></audio></td>
-                    <td><audio class="small-audio" controls><source src="static/audios/remain_speakers/2/RL.wav" type="audio/wav"></audio></td>
-                    <td><audio class="small-audio" controls><source src="static/audios/remain_speakers/2/TGU.wav" type="audio/wav"></audio></td>
+                  <tr class="highlight">
+                    <td><strong>Spk 2</strong><br><small>(current)</small></td>
+                    <td>Replace with target text for Speaker 2.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_two/spk2/prompt.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_two/spk2/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_two/spk2/cortis.wav" type="audio/wav"></audio></td>
                   </tr>
                 </tbody>
               </table>
             <p class="table-explanation">
-              *An actual audio file spoken by Remain Speaker, but not seen during training or unlearning process.
+              *Audio prompt and ground-truth sample are held-out utterances not seen during training or unlearning.
             </p>
           </div>
-        </div> -->
+        </div>
 
         <!-- Third Slide -->
-        <!-- <div class="carousel-item">
+        <div class="carousel-item">
           <div class="table-container">
-            <h2 class="table-title">LibriSpeech Remain Speaker 3</h2>
+            <h2 class="table-title">After Step 3 — Speaker 3 unlearned</h2>
             <table class="table is-fullwidth">
                 <thead>
                   <tr>
+                    <th>Speaker</th>
                     <th>Target Text</th>
                     <th>*Audio Prompt</th>
-                    <th>*Sample to Remain</th>
-                    <th>SGU (Ours)</th>
-                    <th>TGU (Ours)</th>
+                    <th>*Sample to Forget</th>
+                    <th>CORTIS (Ours)</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>Other circumstances permitting, that instinct disposes men to look with favor upon productive efficiency and on whatever is of human use.</td>
-                    <td><audio class="small-audio" controls><source src="static/audios/remain_speakers/3/source.wav" type="audio/wav"></audio></td>
-                    <td><audio class="small-audio" controls><source src="static/audios/remain_speakers/3/ground_truth.wav" type="audio/wav"></audio></td>
-                    <td><audio class="small-audio" controls><source src="static/audios/remain_speakers/3/RL.wav" type="audio/wav"></audio></td>
-                    <td><audio class="small-audio" controls><source src="static/audios/remain_speakers/3/TGU.wav" type="audio/wav"></audio></td>
+                    <td>Spk 1<br><small>(prior)</small></td>
+                    <td>Replace with target text for Speaker 1.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_three/spk1/prompt.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_three/spk1/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_three/spk1/cortis.wav" type="audio/wav"></audio></td>
+                  </tr>
+                  <tr>
+                    <td>Spk 2<br><small>(prior)</small></td>
+                    <td>Replace with target text for Speaker 2.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_three/spk2/prompt.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_three/spk2/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_three/spk2/cortis.wav" type="audio/wav"></audio></td>
+                  </tr>
+                  <tr class="highlight">
+                    <td><strong>Spk 3</strong><br><small>(current)</small></td>
+                    <td>Replace with target text for Speaker 3.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_three/spk3/prompt.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_three/spk3/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_three/spk3/cortis.wav" type="audio/wav"></audio></td>
                   </tr>
                 </tbody>
               </table>
             <p class="table-explanation">
-              *An actual audio file spoken by Remain Speaker, but not seen during training or unlearning process.
+              *Audio prompt and ground-truth sample are held-out utterances not seen during training or unlearning.
             </p>
           </div>
-        </div> -->
+        </div>
+
         <!-- Fourth Slide -->
-        <!-- <div class="carousel-item">
+        <div class="carousel-item">
           <div class="table-container">
-            <h2 class="table-title">LibriSpeech Remain Speaker 4</h2>
+            <h2 class="table-title">After Step 4 — Speaker 4 unlearned</h2>
             <table class="table is-fullwidth">
                 <thead>
                   <tr>
+                    <th>Speaker</th>
                     <th>Target Text</th>
                     <th>*Audio Prompt</th>
-                    <th>*Sample to Remain</th>
-                    <th>SGU (Ours)</th>
-                    <th>TGU (Ours)</th>
+                    <th>*Sample to Forget</th>
+                    <th>CORTIS (Ours)</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>He darted like an arrow through all the halls, down all the stairs, and across the yard.</td>
-                    <td><audio class="small-audio" controls><source src="static/audios/remain_speakers/4/source.wav" type="audio/wav"></audio></td>
-                    <td><audio class="small-audio" controls><source src="static/audios/remain_speakers/4/ground_truth.wav" type="audio/wav"></audio></td>
-                    <td><audio class="small-audio" controls><source src="static/audios/remain_speakers/4/RL.wav" type="audio/wav"></audio></td>
-                    <td><audio class="small-audio" controls><source src="static/audios/remain_speakers/4/TGU.wav" type="audio/wav"></audio></td>
+                    <td>Spk 1<br><small>(prior)</small></td>
+                    <td>Replace with target text for Speaker 1.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_four/spk1/prompt.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_four/spk1/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_four/spk1/cortis.wav" type="audio/wav"></audio></td>
+                  </tr>
+                  <tr>
+                    <td>Spk 2<br><small>(prior)</small></td>
+                    <td>Replace with target text for Speaker 2.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_four/spk2/prompt.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_four/spk2/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_four/spk2/cortis.wav" type="audio/wav"></audio></td>
+                  </tr>
+                  <tr>
+                    <td>Spk 3<br><small>(prior)</small></td>
+                    <td>Replace with target text for Speaker 3.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_four/spk3/prompt.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_four/spk3/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_four/spk3/cortis.wav" type="audio/wav"></audio></td>
+                  </tr>
+                  <tr class="highlight">
+                    <td><strong>Spk 4</strong><br><small>(current)</small></td>
+                    <td>Replace with target text for Speaker 4.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_four/spk4/prompt.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_four/spk4/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_four/spk4/cortis.wav" type="audio/wav"></audio></td>
                   </tr>
                 </tbody>
               </table>
             <p class="table-explanation">
-              *An actual audio file spoken by Remain Speaker, but not seen during training or unlearning process.
+              *Audio prompt and ground-truth sample are held-out utterances not seen during training or unlearning.
             </p>
           </div>
-        </div> -->
+        </div>
+
+        <!-- Fifth Slide -->
+        <div class="carousel-item">
+          <div class="table-container">
+            <h2 class="table-title">After Step 5 — Speaker 5 unlearned</h2>
+            <table class="table is-fullwidth">
+                <thead>
+                  <tr>
+                    <th>Speaker</th>
+                    <th>Target Text</th>
+                    <th>*Audio Prompt</th>
+                    <th>*Sample to Forget</th>
+                    <th>CORTIS (Ours)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Spk 1<br><small>(prior)</small></td>
+                    <td>The window was open as she looked out.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_five/forget/1/1166_src.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_five/forget/1/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_five/forget/1/1166_gen.wav" type="audio/wav"></audio></td>
+                  </tr>
+                  <tr>
+                    <td>Spk 2<br><small>(prior)</small></td>
+                    <td>"And then, besides" she frowned and dropped her voice till it was only just audible.
+                      "this horrid man hadn't made our Julie so-so conspicuous, and Lady Henry hadn't turned out such a toad-and, altogether, Jacob, I'm dreadfully worried."
+                    </td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_five/forget/2/7199_src.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_five/forget/2/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_five/forget/2/7199_gen.wav" type="audio/wav"></audio></td>
+                  </tr>
+                  <tr>
+                    <td>Spk 3<br><small>(prior)</small></td>
+                    <td>These round knobs were not ornamental but symbolic. They were expressive and puzzling, striking and disturbing—food for thought and also for vultures if there had been any looking down from the sky; 
+                      but at all events for such ants as were industrious enough to ascend the pole. 
+                      They would have been even more impressive, those heads on the stakes, if their faces had not been turned to the house.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_five/forget/3/3912_src.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_five/forget/3/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_five/forget/3/3912_gen.wav" type="audio/wav"></audio></td>
+                  </tr>
+                  <tr>
+                    <td>Spk 4<br><small>(prior)</small></td>
+                    <td>But curiosity was too strong for them. Each wanted to see where his particular bomb hit, and how much Earth it would tear up.
+                      The bombs made only small scars in the Earth,
+                      but they sent fragments of steel casing flying all directions
+                      and several men were cut about the face by splinters.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_five/forget/4/9437_src.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_five/forget/4/9437_gt.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_five/forget/4/9437_gen.wav" type="audio/wav"></audio></td>
+                  </tr>
+                  <tr class="highlight">
+                    <td><strong>Spk 5</strong><br><small>(current)</small></td>
+                    <td>Not feeling quite sure however of the fidelity of the nurse's memory, Edwin then went to the station and made inquiries there. 
+                      But an application to the Lost Luggage Office, no such parcel had been deposited there. The reader may perhaps be surprised at this. 
+                      As it is well known that every train is searched by the porters on its arrival at terminus and all forgotten articles are conveyed once to the lost luggage office.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_five/forget/5/8866_src.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_five/forget/5/8866_gt.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_five/forget/5/8866_gen.wav" type="audio/wav"></audio></td>
+                  </tr>
+                </tbody>
+              </table>
+            <p class="table-explanation">
+              *Audio prompt and ground-truth sample are held-out utterances not seen during training or unlearning.
+            </p>
+          </div>
+        </div>
 
       </div>
     </div>
@@ -457,13 +559,14 @@
       <!-- Carousel container -->
       <div id="carousel-demo" class="carousel">
 
-        <!-- First Slide -->
+<!-- First Slide -->
         <div class="carousel-item">
           <div class="table-container">
-            <h2 class="table-title">LibriSpeech Remain Speaker #61</h2>
+            <h2 class="table-title">After Step 1 — Speaker 1 unlearned</h2>
             <table class="table is-fullwidth">
                 <thead>
                   <tr>
+                    <th>Remain Speaker</th>
                     <th>Target Text</th>
                     <th>*Audio Prompt</th>
                     <th>*Sample to Remain</th>
@@ -472,40 +575,239 @@
                 </thead>
                 <tbody>
                   <tr>
-                    <td>We will go out together... .</td>
+                    <td>Remain Spk 1</td>
+                    <td>Replace with target text for Remain Speaker 1.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_one/remain/61/prompt.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_one/remain/61/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_one/remain/61/cortis.wav" type="audio/wav"></audio></td>
+                  </tr>
+                  <tr>
+                    <td>Remain Spk 2</td>
+                    <td>Replace with target text for Remain Speaker 2.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_one/remain/672/prompt.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_one/remain/672/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_one/remain/672/cortis.wav" type="audio/wav"></audio></td>
+                  </tr>
+                  <tr>
+                    <td>Remain Spk 3</td>
+                    <td>Replace with target text for Remain Speaker 3.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_one/remain/4446/prompt.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_one/remain/4446/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_one/remain/4446/cortis.wav" type="audio/wav"></audio></td>
+                  </tr>
+                  <tr>
+                    <td>Remain Spk 4</td>
+                    <td>Replace with target text for Remain Speaker 4.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_one/remain/5883/prompt.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_one/remain/5883/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_one/remain/5883/cortis.wav" type="audio/wav"></audio></td>
+                  </tr>
+                </tbody>
+              </table>
+            <p class="table-explanation">
+              *An actual audio file spoken by Remain Speaker, but not seen during training or unlearning process.
+            </p>
+          </div>
+        </div>
+
+        <!-- Second Slide -->
+        <div class="carousel-item">
+          <div class="table-container">
+            <h2 class="table-title">After Step 2 — Speaker 2 unlearned</h2>
+            <table class="table is-fullwidth">
+                <thead>
+                  <tr>
+                    <th>Remain Speaker</th>
+                    <th>Target Text</th>
+                    <th>*Audio Prompt</th>
+                    <th>*Sample to Remain</th>
+                    <th>CORTIS (Ours)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Remain Spk 1</td>
+                    <td>Replace with target text for Remain Speaker 1.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_two/remain/61/prompt.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_two/remain/61/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_two/remain/61/cortis.wav" type="audio/wav"></audio></td>
+                  </tr>
+                  <tr>
+                    <td>Remain Spk 2</td>
+                    <td>Replace with target text for Remain Speaker 2.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_two/remain/672/prompt.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_two/remain/672/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_two/remain/672/cortis.wav" type="audio/wav"></audio></td>
+                  </tr>
+                  <tr>
+                    <td>Remain Spk 3</td>
+                    <td>Replace with target text for Remain Speaker 3.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_two/remain/4446/prompt.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_two/remain/4446/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_two/remain/4446/cortis.wav" type="audio/wav"></audio></td>
+                  </tr>
+                  <tr>
+                    <td>Remain Spk 4</td>
+                    <td>Replace with target text for Remain Speaker 4.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_two/remain/5883/prompt.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_two/remain/5883/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_two/remain/5883/cortis.wav" type="audio/wav"></audio></td>
+                  </tr>
+                </tbody>
+              </table>
+            <p class="table-explanation">
+              *An actual audio file spoken by Remain Speaker, but not seen during training or unlearning process.
+            </p>
+          </div>
+        </div>
+
+        <!-- Third Slide -->
+        <div class="carousel-item">
+          <div class="table-container">
+            <h2 class="table-title">After Step 3 — Speaker 3 unlearned</h2>
+            <table class="table is-fullwidth">
+                <thead>
+                  <tr>
+                    <th>Remain Speaker</th>
+                    <th>Target Text</th>
+                    <th>*Audio Prompt</th>
+                    <th>*Sample to Remain</th>
+                    <th>CORTIS (Ours)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Remain Spk 1</td>
+                    <td>Replace with target text for Remain Speaker 1.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_three/remain/61/prompt.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_three/remain/61/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_three/remain/61/cortis.wav" type="audio/wav"></audio></td>
+                  </tr>
+                  <tr>
+                    <td>Remain Spk 2</td>
+                    <td>Replace with target text for Remain Speaker 2.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_three/remain/672/prompt.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_three/remain/672/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_three/remain/672/cortis.wav" type="audio/wav"></audio></td>
+                  </tr>
+                  <tr>
+                    <td>Remain Spk 3</td>
+                    <td>Replace with target text for Remain Speaker 3.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_three/remain/4446/prompt.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_three/remain/4446/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_three/remain/4446/cortis.wav" type="audio/wav"></audio></td>
+                  </tr>
+                  <tr>
+                    <td>Remain Spk 4</td>
+                    <td>Replace with target text for Remain Speaker 4.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_three/remain/5883/prompt.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_three/remain/5883/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_three/remain/5883/cortis.wav" type="audio/wav"></audio></td>
+                  </tr>
+                </tbody>
+              </table>
+            <p class="table-explanation">
+              *An actual audio file spoken by Remain Speaker, but not seen during training or unlearning process.
+            </p>
+          </div>
+        </div>
+
+        <!-- Fourth Slide -->
+        <div class="carousel-item">
+          <div class="table-container">
+            <h2 class="table-title">After Step 4 — Speaker 4 unlearned</h2>
+            <table class="table is-fullwidth">
+                <thead>
+                  <tr>
+                    <th>Remain Speaker</th>
+                    <th>Target Text</th>
+                    <th>*Audio Prompt</th>
+                    <th>*Sample to Remain</th>
+                    <th>CORTIS (Ours)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Remain Spk 1</td>
+                    <td>Replace with target text for Remain Speaker 1.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_four/remain/61/prompt.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_four/remain/61/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_four/remain/61/cortis.wav" type="audio/wav"></audio></td>
+                  </tr>
+                  <tr>
+                    <td>Remain Spk 2</td>
+                    <td>Replace with target text for Remain Speaker 2.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_four/remain/672/prompt.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_four/remain/672/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_four/remain/672/cortis.wav" type="audio/wav"></audio></td>
+                  </tr>
+                  <tr>
+                    <td>Remain Spk 3</td>
+                    <td>Replace with target text for Remain Speaker 3.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_four/remain/4446/prompt.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_four/remain/4446/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_four/remain/4446/cortis.wav" type="audio/wav"></audio></td>
+                  </tr>
+                  <tr>
+                    <td>Remain Spk 4</td>
+                    <td>Replace with target text for Remain Speaker 4.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_four/remain/5883/prompt.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_four/remain/5883/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_four/remain/5883/cortis.wav" type="audio/wav"></audio></td>
+                  </tr>
+                </tbody>
+              </table>
+            <p class="table-explanation">
+              *An actual audio file spoken by Remain Speaker, but not seen during training or unlearning process.
+            </p>
+          </div>
+        </div>
+
+        <!-- Fifth Slide -->
+        <div class="carousel-item">
+          <div class="table-container">
+            <h2 class="table-title">After Step 5 — Speaker 5 unlearned</h2>
+            <table class="table is-fullwidth">
+                <thead>
+                  <tr>
+                    <th>Remain Speaker</th>
+                    <th>Target Text</th>
+                    <th>*Audio Prompt</th>
+                    <th>*Sample to Remain</th>
+                    <th>CORTIS (Ours)</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Remain Spk 1</td>
+                    <td>Replace with target text for Remain Speaker 1.</td>
                     <td><audio class="small-audio" controls><source src="static/audios/unlearn_five/remain/61/source.wav" type="audio/wav"></audio></td>
-                    <td><audio class="small-audio" controls><source src="static/audios/remain_speakers/1/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_five/remain/61/gt.wav" type="audio/wav"></audio></td>
                     <td><audio class="small-audio" controls><source src="static/audios/unlearn_five/remain/61/cortis.wav" type="audio/wav"></audio></td>
                   </tr>
-                </tbody>
-              </table>
-            <p class="table-explanation">
-              *An actual audio file spoken by Remain Speaker, but not seen during training or unlearning process.
-            </p>
-          </div>
-        </div>
-
-        <!-- Second Slide
-        <div class="carousel-item">
-          <div class="table-container">
-            <h2 class="table-title">LibriSpeech Remain Speaker 2</h2>
-            <table class="table is-fullwidth">
-                <thead>
                   <tr>
-                    <th>Target Text</th>
-                    <th>*Audio Prompt</th>
-                    <th>*Sample to Remain</th>
-                    <th>SGU (Ours)</th>
-                    <th>TGU (Ours)</th>
+                    <td>Remain Spk 2</td>
+                    <!-- 672-122797-0000.wav -->
+                    <td>Replace with target text for Remain Speaker 2.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_five/remain/672/source.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_five/remain/672/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_five/remain/672/cortis.wav" type="audio/wav"></audio></td>
                   </tr>
-                </thead>
-                <tbody>
                   <tr>
-                    <td>...and towards Christmas, he was one of the first that was cut down.</td>
-                    <td><audio class="small-audio" controls><source src="static/audios/remain_speakers/2/source.wav" type="audio/wav"></audio></td>
-                    <td><audio class="small-audio" controls><source src="static/audios/remain_speakers/2/ground_truth.wav" type="audio/wav"></audio></td>
-                    <td><audio class="small-audio" controls><source src="static/audios/remain_speakers/2/RL.wav" type="audio/wav"></audio></td>
-                    <td><audio class="small-audio" controls><source src="static/audios/remain_speakers/2/TGU.wav" type="audio/wav"></audio></td>
+                    <td>Remain Spk 3</td>
+                    <!-- 4446-2275-0040 -->
+                    <td>Replace with target text for Remain Speaker 3.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_five/remain/4446/source.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_five/remain/4446/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_five/remain/4446/cortis.wav" type="audio/wav"></audio></td>
+                  </tr>
+                  <tr>
+                    <td>Remain Spk 4</td>
+                    <!-- 5683-32865-0008 -->
+                    <td>Replace with target text for Remain Speaker 4.</td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_five/remain/5883/source.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_five/remain/5883/ground_truth.wav" type="audio/wav"></audio></td>
+                    <td><audio class="small-audio" controls><source src="static/audios/unlearn_five/remain/5883/cortis.wav" type="audio/wav"></audio></td>
                   </tr>
                 </tbody>
               </table>
@@ -514,65 +816,6 @@
             </p>
           </div>
         </div>
-
-        Third Slide
-        <div class="carousel-item">
-          <div class="table-container">
-            <h2 class="table-title">LibriSpeech Remain Speaker 3</h2>
-            <table class="table is-fullwidth">
-                <thead>
-                  <tr>
-                    <th>Target Text</th>
-                    <th>*Audio Prompt</th>
-                    <th>*Sample to Remain</th>
-                    <th>SGU (Ours)</th>
-                    <th>TGU (Ours)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Other circumstances permitting, that instinct disposes men to look with favor upon productive efficiency and on whatever is of human use.</td>
-                    <td><audio class="small-audio" controls><source src="static/audios/remain_speakers/3/source.wav" type="audio/wav"></audio></td>
-                    <td><audio class="small-audio" controls><source src="static/audios/remain_speakers/3/ground_truth.wav" type="audio/wav"></audio></td>
-                    <td><audio class="small-audio" controls><source src="static/audios/remain_speakers/3/RL.wav" type="audio/wav"></audio></td>
-                    <td><audio class="small-audio" controls><source src="static/audios/remain_speakers/3/TGU.wav" type="audio/wav"></audio></td>
-                  </tr>
-                </tbody>
-              </table>
-            <p class="table-explanation">
-              *An actual audio file spoken by Remain Speaker, but not seen during training or unlearning process.
-            </p>
-          </div>
-        </div>
-        <!-- Fourth Slide -->
-        <!-- <div class="carousel-item">
-          <div class="table-container">
-            <h2 class="table-title">LibriSpeech Remain Speaker 4</h2>
-            <table class="table is-fullwidth">
-                <thead>
-                  <tr>
-                    <th>Target Text</th>
-                    <th>*Audio Prompt</th>
-                    <th>*Sample to Remain</th>
-                    <th>SGU (Ours)</th>
-                    <th>TGU (Ours)</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>He darted like an arrow through all the halls, down all the stairs, and across the yard.</td>
-                    <td><audio class="small-audio" controls><source src="static/audios/remain_speakers/4/source.wav" type="audio/wav"></audio></td>
-                    <td><audio class="small-audio" controls><source src="static/audios/remain_speakers/4/ground_truth.wav" type="audio/wav"></audio></td>
-                    <td><audio class="small-audio" controls><source src="static/audios/remain_speakers/4/RL.wav" type="audio/wav"></audio></td>
-                    <td><audio class="small-audio" controls><source src="static/audios/remain_speakers/4/TGU.wav" type="audio/wav"></audio></td>
-                  </tr>
-                </tbody>
-              </table>
-            <p class="table-explanation">
-              *An actual audio file spoken by Remain Speaker, but not seen during training or unlearning process.
-            </p>
-          </div>
-        </div> -->
 
       </div>
     </div>
